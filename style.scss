@@ -1,0 +1,82 @@
+@import 'svg-scss';
+
+// Colors
+$blue: #00a6ff;
+$black: #242424;
+
+// Arrows
+$arrow: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>';
+
+.icon-arrow {
+	@include svg($black, $arrow, 24px, 39px);
+}
+
+// Text arrow
+.icon-arrow-small {
+	@include svg($black, $arrow, 10px, 16px);
+	margin-right: 5px;
+}
+
+// Hover arrow
+.icon-arrow-hover {
+	@include svg-hover($black, $blue, 24px, 39px, $arrow);
+	margin-right: 5px;
+}
+
+// List arrow
+ul {
+	list-style: none;
+
+	li {
+		position: relative;
+		margin-bottom: 10px;
+
+		@include svg($blue, $arrow);
+		width: auto; // Overwrite what svg() sets
+		height: auto; // Overwrite what svg() sets
+
+		&::before {
+			width: 10px;
+			height: 16px;
+			left: -20px;
+		}
+	}
+}
+
+// Hover parent arrow
+a {
+	font-size: 24px;
+	border: 2px $black solid;
+	padding: 12px 12px 16px 12px;
+	text-decoration: none;
+	color: $black;
+	transition: color 0.25s ease-in-out;
+
+	&:hover {
+		color: $blue;
+	}
+}
+
+// Circle (with animation)
+.icon-circle {
+	@include svg($black, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.99 91.77"><path fill="currentColor" d="M92.99 45.88A46.5 46.5 0 0 0 53.99 0v15.3a31.49 31.49 0 0 1 0 61.17v15.3a46.5 46.5 0 0 0 39-45.89Zm-77.99 0A31.54 31.54 0 0 1 39 15.3V0a46.49 46.49 0 0 0 0 91.77V76.49a31.56 31.56 0 0 1-24-30.61Z"/></svg>', 32px, 32px);
+
+	&::before {
+		animation: spin 1s infinite;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+// Menu switch on hover
+.icon-menu {
+	@include svg-hover($black, $blue, 28px, 28px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.89 92.99"><path fill="currentColor" d="M0 0h92.89v15H0zm0 38.99h92.89v15H0zm0 39h92.89v15H0z"/></svg>', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.89 92.89"><polygon fill="currentColor" points="92.89 10.61 82.28 0 46.45 35.84 10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 46.45 57.05 82.28 92.89 92.89 82.28 57.05 46.44 92.89 10.61"/></svg>');
+}

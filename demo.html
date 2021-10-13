@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>svg-scss Demo</title>
+	<link href="style.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<h1>svg-scss v.1.0 Demo</h1>
+	<h2>Basic Example</h2>
+	<p>A simple SVG icon set inside of a span element:</p>
+	<p><span class="icon icon-arrow" role="img" aria-hidden="true"></span></p>
+	<hr />
+	<h2>Basic Example with Text</h2>
+	<p>Show an icon inline with text:</p>
+	<p><span class="icon icon-arrow-small" role="img" aria-hidden="true"></span>Test</p>
+	<hr />
+	<h2>Hover Example</h2>
+	<p>Change the color of an icon when hovering:</p>
+	<p><span class="icon icon-arrow-hover" role="img" aria-hidden="true"></span></p>
+	<hr />
+	<h2>Animation Example</h2>
+	<p>Animate an icon:</p>
+	<p><span class="icon icon-circle" role="img" aria-hidden="true"></span></p>
+	<hr />
+	<h2>Switch on Hover</h2>
+	<p>Change the color and icon when hovering:</p>
+	<p><span class="icon icon-menu" role="img" aria-label="Menu" title="Menu"></span></p>
+	<hr />
+	<h2>List Example Without Additional Markup</h2>
+	<p>You can even use it without adding a span or additional markup in the HTML. Here's an example with a standard list:</p>
+	<ul>
+		<li>Test</li>
+		<li>Test</li>
+		<li>Test</li>
+	</ul>
+	<hr />
+	<h2>Hover Parent Example</h2>
+	<p>You can make it so hovering over parent elements also triggers the hover state of the SVG. For example, using a link:</p>
+	<p><a href="#" class="icon-hover"><span class="icon icon-arrow-hover" role="img" aria-hidden="true"></span>Test</a></p>
+	<hr />
+	<h2>Hover Parent Example with Specific Children</h2>
+	<p>Similar to the above, you can also do this, but just for specific children icons:</p>
+	<p>
+		<a href="#" class="icon-hover-parent">
+			<span class="icon icon-arrow" role="img" aria-hidden="true"></span>
+			<span class="icon icon-hover-child icon-arrow-hover" role="img" aria-hidden="true"></span>
+			<span class="icon icon-arrow" role="img" aria-hidden="true"></span>
+		</a>
+	</p>
+</body>
+
+</html>
