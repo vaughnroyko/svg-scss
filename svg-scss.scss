@@ -1,5 +1,5 @@
 /*!
- * svg-scss - v1.0 https://github.com/vaughnroyko/svg-scss
+ * svg-scss - v1.0.1 https://github.com/vaughnroyko/svg-scss
  */
 
 // Base SVG pseudo element styling
@@ -11,7 +11,8 @@
 	content: '';
 	transition: opacity 0.25s ease-in-out;
 	position: absolute;
-	background-size: cover;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 // Return the base SVG element styling with a ::before pseudo element as the encoded SVG background-image

@@ -1,4 +1,4 @@
-svg-scss v1.0
+svg-scss v1.0.1
 ==============
 
 A single file, Sass-based (or SCSS-based) import that allows you to define SVGs directly inside/inline your SCSS to be used anywhere that uses the stylesheet without managing external SVG assets or resources. This is useful for adding icons to your web project without all the workflow overhead or end-user bloat of other icon systems.
@@ -176,6 +176,10 @@ a {
 
 Changelog
 --------------
+
+**Version: 1.0.1 (October 18th, 2021)**
+
+* Changed it so SVGs are now scaled proportionally to set dimensions rather than clipped/cropped.
 
 **Version: 1.0 (October 13th, 2021)**
 
