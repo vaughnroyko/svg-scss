@@ -1,6 +1,4 @@
-/*!
- * svg-scss - v1.0.1 https://github.com/vaughnroyko/svg-scss
- */
+// svg-scss - v1.0.2 https://github.com/vaughnroyko/svg-scss
 
 // Base SVG pseudo element styling
 @mixin svg-pseudo($width, $height) {
@@ -9,20 +7,20 @@
 	left: 0;
 	top: 0;
 	content: '';
-	transition: opacity 0.25s ease-in-out;
 	position: absolute;
 	background-size: contain;
 	background-repeat: no-repeat;
 }
 
 // Return the base SVG element styling with a ::before pseudo element as the encoded SVG background-image
-@mixin svg($fill-color, $svg, $width: 16px, $height: 16px) {
+@mixin svg($fill-color, $width: 16px, $height: 16px, $svg) {
 	vertical-align: middle;
 
-	@if $width != 0 {
+	@if $width !=0 {
 		width: $width;
 	}
-	@if $width != 0 {
+
+	@if $width !=0 {
 		height: $height;
 	}
 
@@ -33,7 +31,18 @@
 }
 
 // Called on the icon itself in the case where you want a parent element to control hover state
-@mixin svg-opacity {
+@mixin svg-opacity($speed: 0.25s) {
+	&::after {
+		opacity: 1;
+	}
+
+	&::before {
+		animation: hide-on-fade $speed ease-in-out forwards;
+	}
+}
+
+// Called on the icon itself in the case where you want to switch one icon with another
+@mixin svg-switch($speed: 0.25s) {
 	&::after {
 		opacity: 1;
 	}
@@ -43,54 +52,104 @@
 	}
 }
 
+// Hide the bottom icon after transition/animation finishes so there's no aliased border around top icon
+@keyframes hide-on-fade {
+	99.99% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
 // Hover animation for SVGs
-@mixin svg-hover($fill, $hover-fill, $width, $height, $svg, $hover-svg: $svg) {
-	@include svg($fill, $svg, $width, $height);
+@mixin svg-hover($fill, $hover-fill, $width, $height, $svg, $hover-svg: null, $speed: 0.25s) {
+	@include svg($fill, $width, $height, $svg);
+
+	@if ($hover-svg ==null) {
+		$hover-svg: $svg;
+
+		&:hover {
+			@include svg-opacity($speed);
+		}
+	}
+
+	@else {
+		&:hover {
+			@include svg-switch($speed);
+		}
+
+		&::before {
+			transition: opacity $speed ease-in-out;
+		}
+	}
 
 	&::after {
 		@include svg-pseudo($width, $height);
 		background-image: url(svg-encode($hover-fill, $hover-svg));
 		opacity: 0;
-	}
-
-	&:hover {
-		@include svg-opacity;
+		z-index: 1;
+		transition: opacity $speed ease-in-out;
 	}
 }
 
 // Encode SVG
 @function svg-encode($fill-color, $svg) {
 	$fill-color: str-replace(#{$fill-color}, '#', '%23');
+
 	@each $char, $encoded in $encoding-reference {
-		@if $char == 'currentColor' {
+		@if $char =='currentColor' {
 			$svg: str-replace($svg, $char, $fill-color);
-		} @else {
+		}
+
+		@else {
 			$svg: str-replace($svg, $char, $encoded);
 		}
 	}
+
 	@return 'data:image/svg+xml,' + $svg;
 }
 
 // String relacing
 @function str-replace($string, $search, $replace: '') {
 	$index: str-index($string, $search);
+
 	@if $index {
 		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
 	}
+
 	@return $string;
 }
 
 // Characters to encode or to replace (in the case of currentColor)
-$encoding-reference: (
-	('<', '%3C'),
-	('>', '%3E'),
-	('"', '\''),
-	('#', '%23'),
-	('&', '%26'),
-	('currentColor', '')
-);
+$encoding-reference: (('%', '%25'),
+		('<', '%3C'),
+		('>', '%3E'),
+		(' ', '%20'),
+		('!', '%21'),
+		('*', '%2A'),
+		('\'', '%27'),
+		('"', '%22'),
+		('(', '%28'),
+		(')', '%29'),
+		(';', '%3B'),
+		(':', '%3A'),
+		('@', '%40'),
+		('&', '%26'),
+		('=', '%3D'),
+		('+', '%2B'),
+		('$', '%24'),
+		(',', '%2C'),
+		('/', '%2F'),
+		('?', '%3F'),
+		('#', '%23'),
+		('[', '%5B'),
+		(']', '%5D'),
+		('currentColor', ''));
 
 // Helper classes
+
 // Defaults
 .icon {
 	position: relative;

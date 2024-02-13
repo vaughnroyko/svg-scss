@@ -1,0 +1,26 @@
+@keyframes hide-on-fade {
+  99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.icon {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-hover:hover .icon::after {
+  opacity: 1;
+}
+.icon-hover:hover .icon::before {
+  animation: hide-on-fade 0.25s ease-in-out forwards;
+}
+
+.icon-hover-parent:hover .icon-hover-child::after {
+  opacity: 1;
+}
+.icon-hover-parent:hover .icon-hover-child::before {
+  animation: hide-on-fade 0.25s ease-in-out forwards;
+}
