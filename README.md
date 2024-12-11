@@ -24,7 +24,7 @@ A simple SVG icon set inside of a span element:
 
 ```scss
 .icon-arrow {
-	@include svg("#242424", 24px, 39px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
+	@include svg-scss.svg("#242424", 24px, 39px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
 }
 ```
 
@@ -40,7 +40,7 @@ Show an icon inline with text:
 
 ```scss
 .icon-arrow-small {
-	@include svg("#242424", 10px, 16px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
+	@include svg-scss.svg("#242424", 10px, 16px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
 	margin-right: 5px;
 }
 ```
@@ -55,7 +55,7 @@ Change the color of an icon when hovering:
 
 ```scss
 .icon-arrow-hover {
-	@include svg-hover("#242424", "#00a6ff", 24px, 39px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
+	@include svg-scss.svg-hover("#242424", "#00a6ff", 24px, 39px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
 }
 ```
 
@@ -69,7 +69,7 @@ Animate an icon:
 
 ```scss
 .icon-circle {
-	@include svg("#242424", 32px, 32px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.99 91.77"><path fill="currentColor" d="M92.99 45.88A46.5 46.5 0 0 0 53.99 0v15.3a31.49 31.49 0 0 1 0 61.17v15.3a46.5 46.5 0 0 0 39-45.89Zm-77.99 0A31.54 31.54 0 0 1 39 15.3V0a46.49 46.49 0 0 0 0 91.77V76.49a31.56 31.56 0 0 1-24-30.61Z"/></svg>');
+	@include svg-scss.svg("#242424", 32px, 32px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.99 91.77"><path fill="currentColor" d="M92.99 45.88A46.5 46.5 0 0 0 53.99 0v15.3a31.49 31.49 0 0 1 0 61.17v15.3a46.5 46.5 0 0 0 39-45.89Zm-77.99 0A31.54 31.54 0 0 1 39 15.3V0a46.49 46.49 0 0 0 0 91.77V76.49a31.56 31.56 0 0 1-24-30.61Z"/></svg>');
 
 	&::before {
 		animation: spin 1s infinite;
@@ -97,7 +97,7 @@ Change the color and icon when hovering:
 
 ```scss
 .icon-menu {
-	@include svg-hover("#242424", "#00a6ff", 28px, 28px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.89 92.99"><path fill="currentColor" d="M0 0h92.89v15H0zm0 38.99h92.89v15H0zm0 39h92.89v15H0z"/></svg>', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.89 92.89"><polygon fill="currentColor" points="92.89 10.61 82.28 0 46.45 35.84 10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 46.45 57.05 82.28 92.89 92.89 82.28 57.05 46.44 92.89 10.61"/></svg>');
+	@include svg-scss.svg-hover("#242424", "#00a6ff", 28px, 28px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.89 92.99"><path fill="currentColor" d="M0 0h92.89v15H0zm0 38.99h92.89v15H0zm0 39h92.89v15H0z"/></svg>', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.89 92.89"><polygon fill="currentColor" points="92.89 10.61 82.28 0 46.45 35.84 10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 46.45 57.05 82.28 92.89 92.89 82.28 57.05 46.44 92.89 10.61"/></svg>');
 }
 ```
 
@@ -117,7 +117,7 @@ ul {
 		position: relative;
 		margin-bottom: 10px;
 
-		@include svg("#00a6ff", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
+		@include svg-scss.svg("#00a6ff", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>');
 		width: auto; // Overwrite what svg() sets
 		height: auto; // Overwrite what svg() sets
 
@@ -190,7 +190,7 @@ Change the transition speed of the hover effect:
 
 ```scss
 .icon-arrow-large-hover {
-	@include svg-hover("#242424", "#00a6ff", 48px, 78px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>', "", 1s);
+	@include svg-scss.svg-hover("#242424", "#00a6ff", 48px, 78px, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.05 92.89"><polygon fill="currentColor" points="10.61 0 0 10.61 35.84 46.45 0 82.28 10.61 92.89 57.05 46.45 10.61 0"/></svg>', null, 1s);
 }
 ```
 
