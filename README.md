@@ -1,4 +1,4 @@
-# svg-scss v1.0.2
+# svg-scss v1.0.3
 
 A single file, Sass-based (or SCSS-based) import that allows you to define SVGs directly inside/inline your SCSS to be used anywhere that uses the stylesheet without managing external SVG assets or resources. This is useful for adding icons to your web project without all the workflow overhead or end-user bloat of other icon systems.
 
@@ -199,6 +199,10 @@ Change the transition speed of the hover effect:
 ```
 
 ## Changelog
+
+**Version: 1.0.3 (December 11th, 2024)**
+
+- Updated syntax for Dart Sass 1.80.0 support, removing all deprecation warnings
 
 **Version: 1.0.2 (February 13th, 2024)**
 
